@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 public class TodoTest {
     WebDriver driver;
@@ -65,7 +66,11 @@ public class TodoTest {
         WebElement newTodoText = driver.findElement(By.cssSelector("[data-testid=new-todo]"));
         newTodoText.sendKeys("Learn Automation");
         WebElement submitAddButton = driver.findElement(By.cssSelector("[data-testid=submit-newTask]"));
+        submitAddButton.click();
 
+        //Assertion to check if the new todos added
+        List<WebElement> tasks = driver.findElements(By.cssSelector("[data-testid=todo-item]"));
+        Assert.assertTrue(tasks.get(0).isDisplayed());
 
     }
 }
