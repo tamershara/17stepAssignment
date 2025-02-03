@@ -48,6 +48,19 @@ public class TodoTest {
     @Test
     public void user_Should_Be_Able_To_Add_TODO()
     {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        //login
+        driver.get("https://todo.qacart.com");
+        WebElement email = driver.findElement(By.cssSelector("[data-testid=email]"));
+        email.sendKeys("automationuser@example.com");
+        WebElement password = driver.findElement(By.cssSelector("[data-testid=password]"));
+        password.sendKeys("12345678a");
+        WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
+        submitButton.click();
+
+
+
 
     }
 }
