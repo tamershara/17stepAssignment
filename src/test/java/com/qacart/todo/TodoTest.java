@@ -86,5 +86,15 @@ public class TodoTest {
         WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
         submitButton.click();
 
+        //Add todos
+        WebElement addButton = driver.findElement(By.cssSelector("[data-testid=add]"));
+        addButton.click();
+        WebElement newTodoText = driver.findElement(By.cssSelector("[data-testid=new-todo]"));
+        newTodoText.sendKeys("Learn Automation");
+        WebElement submitAddButton = driver.findElement(By.cssSelector("[data-testid=submit-newTask]"));
+        submitAddButton.click();
+
+
+
     }
 }
