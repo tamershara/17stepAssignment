@@ -44,4 +44,10 @@ public class TodoTest {
         WebElement noTodoMessage = driver.findElement(By.cssSelector("[data-testid=no-todos]"));
         Assert.assertTrue(noTodoMessage.isDisplayed());
     }
+
+    @Test
+    public void user_Should_Be_Able_To_Add_TODO()
+    {
+
+    }
 }
