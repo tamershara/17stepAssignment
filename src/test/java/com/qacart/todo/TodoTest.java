@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.time.Instant;
 
 public class TodoTest {
     WebDriver driver;
@@ -26,13 +29,14 @@ public class TodoTest {
         WebElement lastName = driver.findElement(By.cssSelector("[data-testid=last-name]"));
         lastName.sendKeys("QA");
         WebElement email = driver.findElement(By.cssSelector("[data-testid=email]"));
-        email.sendKeys("qa@qa.com");
+        long timeStamp = Instant.now().getEpochSecond();
+        String emailAddress = "Automation" + timeStamp + "@qacart.com";
+        email.sendKeys(emailAddress);
         WebElement password = driver.findElement(By.cssSelector("[data-testid=password]"));
-        password.sendKeys("qa");
+        password.sendKeys("qa123456");
         WebElement confirmPassword = driver.findElement(By.cssSelector("[data-testid=confirm-password]"));
-        confirmPassword.sendKeys("qa");
+        confirmPassword.sendKeys("qa123456");
         WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
         submitButton.click();
-
     }
 }
