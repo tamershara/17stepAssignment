@@ -71,6 +71,20 @@ public class TodoTest {
         //Assertion to check if the new todos added
         List<WebElement> tasks = driver.findElements(By.cssSelector("[data-testid=todo-item]"));
         Assert.assertTrue(tasks.get(0).isDisplayed());
+    }
+
+    @Test
+    public void user_Should_Be_Able_To_Delete_Todo() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        //login
+        driver.get("https://todo.qacart.com");
+        WebElement email = driver.findElement(By.cssSelector("[data-testid=email]"));
+        email.sendKeys("automationuser@example.com");
+        WebElement password = driver.findElement(By.cssSelector("[data-testid=password]"));
+        password.sendKeys("12345678a");
+        WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
+        submitButton.click();
 
     }
 }
