@@ -93,8 +93,21 @@ public class TodoTest {
         newTodoText.sendKeys("Learn Automation");
         WebElement submitAddButton = driver.findElement(By.cssSelector("[data-testid=submit-newTask]"));
         submitAddButton.click();
-
-
-
+        List<WebElement> tasks = driver.findElements(By.cssSelector("[data-testid=todo-item]"));
+        int count = tasks.size();
+        System.out.println(count);
+        //Delete todos
+        WebElement deleteButton = driver.findElement(By.cssSelector("[data-testid=delete]"));
+        deleteButton.click();
+        if(count == 1)
+        {
+            WebElement noTodoMessage = driver.findElement(By.cssSelector("[data-testid=no-todos]"));
+            Assert.assertTrue(noTodoMessage.isDisplayed());
+        }else {
+            driver.navigate().refresh();
+            List<WebElement> tasksAfterDelete = driver.findElements(By.cssSelector("[data-testid=todo-item]"));
+            int expectedCount = tasksAfterDelete.size();
+            Assert.assertEquals(expectedCount , count - 1);
+        }
     }
 }
