@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.time.Instant;
 
 public class TodoTest {
@@ -23,6 +24,7 @@ public class TodoTest {
     @Test
     public void should_User_Be_Able_To_Register()
     {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://todo.qacart.com/signup");
         WebElement firstName = driver.findElement(By.cssSelector("[data-testid=first-name]"));
         firstName.sendKeys("Automation");
