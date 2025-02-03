@@ -38,5 +38,8 @@ public class TodoTest {
         confirmPassword.sendKeys("qa123456");
         WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
         submitButton.click();
+        // For new users they always have to see no todos
+        WebElement noTodoMessage = driver.findElement(By.cssSelector("[data-testid=no-todos]"));
+        Assert.assertTrue(noTodoMessage.isDisplayed());
     }
 }
