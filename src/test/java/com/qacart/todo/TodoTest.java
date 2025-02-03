@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -30,7 +31,7 @@ public class TodoTest {
         WebElement firstName = driver.findElement(By.cssSelector("[data-testid=first-name]"));
         firstName.sendKeys("Automation");
         WebElement lastName = driver.findElement(By.cssSelector("[data-testid=last-name]"));
-        lastName.sendKeys("QA");
+        lastName.sendKeys("QA1");
         WebElement email = driver.findElement(By.cssSelector("[data-testid=email]"));
         long timeStamp = Instant.now().getEpochSecond();
         String emailAddress = "Automation" + timeStamp + "@qacart.com";
@@ -109,5 +110,10 @@ public class TodoTest {
             int expectedCount = tasksAfterDelete.size();
             Assert.assertEquals(expectedCount , count - 1);
         }
+    }
+
+    @AfterMethod
+    void tearDown() {
+        driver.quit();
     }
 }
